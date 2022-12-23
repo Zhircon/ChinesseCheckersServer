@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b0cb20c1699a41a99197c15605103eba" Name="Diagram1">
+        <EntityTypeShape EntityType="ChinesseCheckersDBModel.Players" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="ChinesseCheckersDBModel.Configurations" Width="1.5" PointX="5.375" PointY="1.125" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
