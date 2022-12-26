@@ -9,16 +9,18 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
+    public enum OperationResult
+    {
+        Sucessfull = 0,
+        Unknown = 1,
+        ConnectionLost = 100,
+        OperationNoValid = 200
+    }
+
     public static class PlayerManager
     {
-        public enum OperationResult 
-        {
-            Sucessfull = 0,
-            Unknown = 1,
-            ConnectionLost = 100,
-            OperationNoValid = 200
-        }
-        private static DataAccess.Player checkIfPlayerExists(string _email)
+
+        private static DataAccess.Player searchPlayerByEmail(string _email)
         {
             DataAccess.Player playerSearched = null;
             using (var _context = new DataAccess.ChinesseCheckersDBEntities())
@@ -43,7 +45,7 @@ namespace Logic
             {
                 try
                 {
-                    if (checkIfPlayerExists(_email) == null)
+                    if (searchPlayerByEmail(_email) == null)
                     {
                         playerToAdd.Nickname = _nickname;
                         playerToAdd.Password = _password;
@@ -66,6 +68,25 @@ namespace Logic
             }
             return operationResult;
         }
-
+        public static DataAccess.Player Login(string _email,string _password)
+        {
+            DataAccess.Player playerLoged = null;
+            using (var _context = new DataAccess.ChinesseCheckersDBEntities())
+            {
+                try
+                {
+                    playerLoged = _context.PlayerSet.Where(
+                        r => r.Email.Equals(_email.ToLower())
+                        && r.Password.Equals(_password)
+                        ).FirstOrDefault();
+                }
+                catch (System.Data.Entity.Core.EntityException)
+                {
+                    Console.WriteLine("Database server not found");
+                    playerLoged = null;
+                }
+                return playerLoged;
+            }
+        }
     }
 }
