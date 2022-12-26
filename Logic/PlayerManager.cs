@@ -11,32 +11,14 @@ namespace Logic
 {
     public static class PlayerManager
     {
-        public static void SayHelloWorld()
+        public enum OperationResult 
         {
-            Console.WriteLine("Hello world!");
+            Sucessfull = 0,
+            Unknown = 1,
+            ConnectionLost = 100,
+            OperationNoValid = 200
         }
-        public static int AddPlayer(string _nickname,string _password,string _email)
-        {
-            DataAccess.Player playerToAdd = new DataAccess.Player();
-            int operationResult = 0;
-            using (var dbContext = new DataAccess.ChinesseCheckersDBEntities())
-            {
-                try
-                {
-                    playerToAdd.Nickname = _nickname;
-                    playerToAdd.Password = _password;
-                    playerToAdd.Email = _email;
-                    dbContext.PlayerSet.Add(playerToAdd);
-                    dbContext.SaveChanges();
-                    operationResult = playerToAdd.IdPlayer;
-                }catch (System.Data.Entity.Core.EntityException)
-                {
-                    Console.WriteLine("Database server not found");
-                }
-            }
-            return operationResult;
-        }
-        public static DataAccess.Player CheckIfPlayerExists(string _email)
+        private static DataAccess.Player checkIfPlayerExists(string _email)
         {
             DataAccess.Player playerSearched = null;
             using (var _context = new DataAccess.ChinesseCheckersDBEntities())
@@ -53,5 +35,37 @@ namespace Logic
                 return playerSearched;
             }
         }
+        public static OperationResult AddPlayer(string _nickname,string _password,string _email)
+        {
+            DataAccess.Player playerToAdd = new DataAccess.Player();
+            OperationResult operationResult = OperationResult.Unknown;
+            using (var dbContext = new DataAccess.ChinesseCheckersDBEntities())
+            {
+                try
+                {
+                    if (checkIfPlayerExists(_email) == null)
+                    {
+                        playerToAdd.Nickname = _nickname;
+                        playerToAdd.Password = _password;
+                        playerToAdd.Email = _email;
+                        dbContext.PlayerSet.Add(playerToAdd);
+                        dbContext.SaveChanges();
+                        if (playerToAdd.IdPlayer != 0)
+                        {
+                            operationResult = OperationResult.Sucessfull;
+                        }
+                    }
+                    else
+                    {
+                        operationResult = OperationResult.OperationNoValid;
+                    }
+                }catch (System.Data.Entity.Core.EntityException)
+                {
+                    operationResult = OperationResult.ConnectionLost;
+                }
+            }
+            return operationResult;
+        }
+
     }
 }
