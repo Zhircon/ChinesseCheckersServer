@@ -15,9 +15,8 @@ namespace DataAccess
     public partial class Configuration
     {
         public int IdConfiguration { get; set; }
-        public string idPlayerOwner { get; set; }
-        public string volMusic { get; set; }
-        public string volSFX { get; set; }
+        public int volMusic { get; set; }
+        public int volSFX { get; set; }
         public string language { get; set; }
     }
 }

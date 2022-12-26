@@ -23,9 +23,8 @@
       <PropertyRef Name="IdConfiguration" />
     </Key>
     <Property Name="IdConfiguration" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="idPlayerOwner" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="volMusic" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="volSFX" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="volMusic" Type="int" Nullable="false" />
+    <Property Name="volSFX" Type="int" Nullable="false" />
     <Property Name="language" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
 </Schema></edmx:StorageModels>
@@ -50,9 +49,8 @@
             <PropertyRef Name="IdConfiguration" />
           </Key>
           <Property Name="IdConfiguration" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idPlayerOwner" Type="String" Nullable="false" />
-          <Property Name="volMusic" Type="String" Nullable="false" />
-          <Property Name="volSFX" Type="String" Nullable="false" />
+          <Property Name="volMusic" Type="Int32" Nullable="false" />
+          <Property Name="volSFX" Type="Int32" Nullable="false" />
           <Property Name="language" Type="String" Nullable="false" />
         </EntityType>
       </Schema>
@@ -75,7 +73,6 @@
       <EntityTypeMapping TypeName="IsTypeOf(ChinesseCheckersDBModel.Configuration)">
         <MappingFragment StoreEntitySet="ConfigurationSet">
           <ScalarProperty Name="IdConfiguration" ColumnName="IdConfiguration" />
-          <ScalarProperty Name="idPlayerOwner" ColumnName="idPlayerOwner" />
           <ScalarProperty Name="volMusic" ColumnName="volMusic" />
           <ScalarProperty Name="volSFX" ColumnName="volSFX" />
           <ScalarProperty Name="language" ColumnName="language" />
