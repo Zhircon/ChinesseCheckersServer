@@ -49,7 +49,7 @@ namespace Logic
                 {
                     Console.WriteLine("Database server not found");
                     playerSearched = null;
-                };
+                }
                 return playerSearched;
             }
         }
