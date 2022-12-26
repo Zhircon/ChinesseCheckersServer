@@ -42,8 +42,6 @@ namespace Logic
             OperationResult operationResult = OperationResult.Unknown;
 
             DataAccess.Player playerToAdd = new DataAccess.Player();
-            DataAccess.Configuration configuration = new DataAccess.Configuration();
-
             var emailLowered = _email.ToLower(CultureInfo.InvariantCulture);
             var nicknameLowered = _email.ToLower(CultureInfo.InvariantCulture);
 
