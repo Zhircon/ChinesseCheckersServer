@@ -25,7 +25,7 @@ namespace DataAccess
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Players> PlayersSet { get; set; }
-        public virtual DbSet<Configurations> ConfigurationsSet { get; set; }
+        public virtual DbSet<Player> PlayerSet { get; set; }
+        public virtual DbSet<Configuration> ConfigurationSet { get; set; }
     }
 }

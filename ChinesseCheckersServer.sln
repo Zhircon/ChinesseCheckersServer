@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.33027.164
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinesseCheckersServer", "ChinesseCheckersServer\ChinesseCheckersServer.csproj", "{448C47BC-DC98-40B4-AD27-4BA72EEDE29A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "ChinesseCheckersServer\Service.csproj", "{448C47BC-DC98-40B4-AD27-4BA72EEDE29A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{3D9B404A-02C0-4D3B-A387-3EFFD3F1464D}"
 EndProject

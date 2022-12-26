@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b0cb20c1699a41a99197c15605103eba" Name="Diagram1">
-        <EntityTypeShape EntityType="ChinesseCheckersDBModel.Players" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="ChinesseCheckersDBModel.Configurations" Width="1.5" PointX="5.375" PointY="1.125" />
+        <EntityTypeShape EntityType="ChinesseCheckersDBModel.Player" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="ChinesseCheckersDBModel.Configuration" Width="1.5" PointX="5.375" PointY="1.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

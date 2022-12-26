@@ -12,7 +12,7 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Configurations
+    public partial class Configuration
     {
         public int IdConfiguration { get; set; }
         public string idPlayerOwner { get; set; }
