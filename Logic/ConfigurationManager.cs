@@ -29,5 +29,26 @@ namespace Logic
                 return configuration;
             }
         }
+        public static Logic.OperationResult DeleteConfiguration(int _idPlayer)
+        {
+            OperationResult operationResult = OperationResult.Unknown;
+            DataAccess.Configuration configuration;
+            using (var _context = new DataAccess.ChinesseCheckersDBEntities())
+            {
+                try
+                {
+                    configuration = new DataAccess.Configuration() 
+                    { IdConfiguration = _idPlayer};
+                    _context.ConfigurationSet.Remove(configuration);
+                    operationResult = OperationResult.Sucessfull;
+                }
+                catch (System.Data.Entity.Core.EntityException)
+                {
+                    Console.WriteLine("Database server not found");
+                    operationResult = OperationResult.ConnectionLost;
+                }
+                return operationResult;
+            }
+        }
     }
 }

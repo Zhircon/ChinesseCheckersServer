@@ -52,7 +52,7 @@ namespace Logic
                     if (searchPlayerByEmail(_email) == null)
                     {
                         playerToAdd.Nickname = nicknameLowered;
-                        playerToAdd.Password = _password;
+                        playerToAdd.Password = Encrypt.GetSHA256(_password);
                         playerToAdd.Email = emailLowered;
                         dbContext.PlayerSet.Add(playerToAdd);
                         dbContext.SaveChanges();
@@ -96,17 +96,16 @@ namespace Logic
                 return playerLoged;
             }
         }
-        public static OperationResult DeletePlayer(string _email)
+        public static OperationResult DeletePlayer(int _idPlayer)
         {
             DataAccess.Player playerLoged = null;
             OperationResult operationResult = OperationResult.Unknown;
-            var emailLowered = _email.ToLower(CultureInfo.InvariantCulture);
             using (var _context = new DataAccess.ChinesseCheckersDBEntities())
             {
                 try
                 {
                     playerLoged = _context.PlayerSet.Where(
-                        r => r.Email.Equals(emailLowered)).FirstOrDefault();
+                        r => r.IdPlayer.Equals(_idPlayer)).FirstOrDefault();
                     _context.PlayerSet.Remove(playerLoged);
                     operationResult = OperationResult.Sucessfull;
                 }
