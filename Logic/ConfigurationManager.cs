@@ -10,17 +10,17 @@ namespace Logic
     {
         public static DataAccess.Configuration AddConfiguration(int _idPlayer)
         {
-            DataAccess.Configuration configuration;
+            DataAccess.Configuration configuration = new DataAccess.Configuration(); ;
             using (var _context= new DataAccess.ChinesseCheckersDBEntities())
             {
                 try
                 {
-                    configuration = new DataAccess.Configuration();
                     configuration.IdConfiguration = _idPlayer;
                     configuration.volMusic = 100;
                     configuration.volSFX = 100;
                     configuration.language = "es";
                     _context.ConfigurationSet.Add(configuration);
+                    _context.SaveChanges();
                 }catch(System.Data.Entity.Core.EntityException)
                 {
                     Console.WriteLine("Database server not found");

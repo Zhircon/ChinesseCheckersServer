@@ -13,8 +13,7 @@ namespace ChinesseCheckersServer
         {
             ServiceHost gameService = new ServiceHost(typeof(GameService));
             gameService.Open();
-            Logic.EmailManager.SendEmailMessage("agnizahir@gmail.com", "agnizahir@gmail.com", "test", "HHola mundo");
-            Console.WriteLine("Server Activo");
+            Console.WriteLine("Server and services are online now");
             Console.Read();
             gameService.Close();
         }

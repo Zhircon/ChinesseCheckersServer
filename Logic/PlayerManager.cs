@@ -43,7 +43,6 @@ namespace Logic
 
             DataAccess.Player playerToAdd = new DataAccess.Player();
             var emailLowered = _email.ToLower(CultureInfo.InvariantCulture);
-            var nicknameLowered = _email.ToLower(CultureInfo.InvariantCulture);
 
             using (var dbContext = new DataAccess.ChinesseCheckersDBEntities())
             {
@@ -51,7 +50,7 @@ namespace Logic
                 {
                     if (searchPlayerByEmail(_email) == null)
                     {
-                        playerToAdd.Nickname = nicknameLowered;
+                        playerToAdd.Nickname = _nickname;
                         playerToAdd.Password = Encrypt.GetSHA256(_password);
                         playerToAdd.Email = emailLowered;
                         dbContext.PlayerSet.Add(playerToAdd);
@@ -107,6 +106,7 @@ namespace Logic
                     playerLoged = _context.PlayerSet.Where(
                         r => r.IdPlayer.Equals(_idPlayer)).FirstOrDefault();
                     _context.PlayerSet.Remove(playerLoged);
+                    ConfigurationManager.DeleteConfiguration(playerLoged.IdPlayer);
                     operationResult = OperationResult.Sucessfull;
                 }
                 catch (System.Data.Entity.Core.EntityException)
