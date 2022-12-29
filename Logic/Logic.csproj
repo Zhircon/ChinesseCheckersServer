@@ -46,6 +46,7 @@
     <Compile Include="Encrypt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PlayerManager.cs" />
+    <Compile Include="Session.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">

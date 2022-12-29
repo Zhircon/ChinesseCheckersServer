@@ -17,12 +17,12 @@ namespace ChinesseCheckersServer
             return Logic.PlayerManager.DeletePlayer(_idPlayer);
         }
 
-        Player IPlayerMgt.Login(string _email, string _password)
+        Logic.Session IPlayerMgt.Login(string _email, string _password)
         {
             return Logic.PlayerManager.Login(_email, _password);
         }
 
-        OperationResult IPlayerMgt.RegisterPlayer(string _nickname, string _password, string _email)
+        Logic.OperationResult IPlayerMgt.RegisterPlayer(string _nickname, string _password, string _email)
         {
             return Logic.PlayerManager.AddPlayer(_nickname, _password, _email);
         }

@@ -15,11 +15,19 @@ namespace Logic
             Credentials = new NetworkCredential("agnizahir@gmail.com", "dsedbcgjqhaisphv"),
             EnableSsl = true
         };
-        public static void SendEmailMessage(string _from,string _recipients,string _subject,string _body)
+        public static OperationResult SendEmailMessage(string _recipients,string _subject,string _body)
         {
-            smtpClient.Send(_from, _recipients , _subject, _body);
-            Console.WriteLine("Sent");
-            Console.ReadLine();
+            OperationResult operationResult;
+            string _from = "agnizahir@gmail.com";
+            try
+            {
+                smtpClient.Send(_from, _recipients, _subject, _body);
+                operationResult = OperationResult.Sucessfull;
+            }catch(SmtpException)
+            {
+                operationResult = OperationResult.Failed;
+            }
+            return operationResult;
         }
     }
 }

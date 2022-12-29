@@ -14,8 +14,8 @@ namespace Logic
     {
         Sucessfull = 0,
         Unknown = 1,
-        ConnectionLost = 100,
-        OperationNoValid = 200
+        Failed = 2,
+        ConnectionLost = 100
     }
 
     public static class PlayerManager
@@ -64,7 +64,7 @@ namespace Logic
                     }
                     else
                     {
-                        operationResult = OperationResult.OperationNoValid;
+                        operationResult = OperationResult.Failed;
                     }
                 }catch (System.Data.Entity.Core.EntityException)
                 {
@@ -74,25 +74,42 @@ namespace Logic
             }
             return operationResult;
         }
-        public static DataAccess.Player Login(string _email,string _password)
+        public static Session Login(string _email,string _password)
         {
+            Session session = null;
             DataAccess.Player playerLoged = null;
+            DataAccess.Configuration playerConfiguration = null;
             var emailLowered = _email.ToLower(CultureInfo.InvariantCulture);
+            var passwordHashed = Encrypt.GetSHA256(_password); 
             using (var _context = new DataAccess.ChinesseCheckersDBEntities())
             {
                 try
                 {
                     playerLoged = _context.PlayerSet.Where(
                         r => r.Email.Equals(emailLowered)
-                        && r.Password.Equals(_password)
+                        && r.Password.Equals(passwordHashed)
                         ).FirstOrDefault();
+                    if (playerLoged != null)
+                    {
+                        playerConfiguration = _context.ConfigurationSet.Where(
+                        r => r.IdConfiguration.Equals(playerLoged.IdPlayer)
+                        ).FirstOrDefault();
+                        session = new Session();
+                        session.PlayerLoged = playerLoged;
+                        session.PlayerConfiguration = playerConfiguration;
+                    }
+                    else
+                    {
+                        session = null;
+                    }
+
                 }
                 catch (System.Data.Entity.Core.EntityException)
                 {
                     Console.WriteLine("Database server not found");
-                    playerLoged = null;
+                    session = null;
                 }
-                return playerLoged;
+                return session;
             }
         }
         public static OperationResult DeletePlayer(int _idPlayer)

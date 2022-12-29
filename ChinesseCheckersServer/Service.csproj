@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectionTest\ConnectionTestMgt.cs" />
+    <Compile Include="ConnectionTest\IConnectionTestMgt.cs" />
+    <Compile Include="EmailMgt\EmailMgt.cs" />
+    <Compile Include="EmailMgt\IEmailMgt.cs" />
     <Compile Include="PlayerMgt\PlayerMgt.cs" />
     <Compile Include="PlayerMgt\IPlayerMgt.cs" />
     <Compile Include="Program.cs" />

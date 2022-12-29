@@ -14,7 +14,7 @@ namespace ChinesseCheckersServer
         [OperationContract]
         Logic.OperationResult RegisterPlayer(string _nickname, string _password, string _email);
         [OperationContract]
-        DataAccess.Player Login(string _email, string _password);
+        Logic.Session Login(string _email, string _password);
         [OperationContract]
         Logic.OperationResult DeletePlayer(int _idPlayer);
     }

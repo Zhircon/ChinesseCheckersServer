@@ -19,5 +19,18 @@ namespace Logic
             for (int i = 0; i < stream.Length; i++) { sb.AppendFormat("{0:x2}", stream[i]); }
             return sb.ToString();
         }
+        public static string GenerateNewCode()
+        {
+            var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var Charsarr = new char[4];
+            var random = new Random();
+
+            for (int i = 0; i < Charsarr.Length; i++)
+            {
+                Charsarr[i] = characters[random.Next(characters.Length)];
+            }
+            var resultString = new String(Charsarr);
+            return resultString;
+        }
     }
 }
