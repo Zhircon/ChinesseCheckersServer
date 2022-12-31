@@ -10,7 +10,7 @@ namespace Logic
     {
         public static DataAccess.Configuration AddConfiguration(int _idPlayer)
         {
-            DataAccess.Configuration configuration = new DataAccess.Configuration(); ;
+            DataAccess.Configuration configuration = new DataAccess.Configuration();
             using (var _context= new DataAccess.ChinesseCheckersDBEntities())
             {
                 try
@@ -57,8 +57,7 @@ namespace Logic
             {
                 try
                 {
-                    configuration = new DataAccess.Configuration() 
-                    { IdConfiguration = _idPlayer};
+                    configuration = new DataAccess.Configuration { IdConfiguration = _idPlayer};
                     _context.ConfigurationSet.Remove(configuration);
                     operationResult = OperationResult.Sucessfull;
                 }
