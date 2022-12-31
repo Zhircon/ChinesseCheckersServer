@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/26/2022 14:32:31
+-- Date Created: 12/31/2022 13:11:50
 -- Generated from EDMX file: C:\Users\Zhircon\source\repos\ChinesseCheckersServer\DataAccess\Model.edmx
 -- --------------------------------------------------
 
@@ -45,8 +45,7 @@ GO
 -- Creating table 'ConfigurationSet'
 CREATE TABLE [dbo].[ConfigurationSet] (
     [IdConfiguration] int IDENTITY(1,1) NOT NULL,
-    [volMusic] int  NOT NULL,
-    [volSFX] int  NOT NULL,
+    [volMusic] float  NOT NULL,
     [language] nvarchar(max)  NOT NULL
 );
 GO

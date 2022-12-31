@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b0cb20c1699a41a99197c15605103eba" Name="Diagram1">
-        <EntityTypeShape EntityType="ChinesseCheckersDBModel.Player" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="ChinesseCheckersDBModel.Configuration" Width="1.5" PointX="5.375" PointY="1.125" />
+      <Diagram DiagramId="b0cb20c1699a41a99197c15605103eba" Name="Diagram1" ZoomLevel="150">
+        <EntityTypeShape EntityType="ChinesseCheckersDBModel.Player" Width="1.5" PointX="3.25" PointY="1.25" />
+        <EntityTypeShape EntityType="ChinesseCheckersDBModel.Configuration" Width="1.5" PointX="5.75" PointY="1.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

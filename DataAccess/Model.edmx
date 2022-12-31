@@ -23,8 +23,7 @@
       <PropertyRef Name="IdConfiguration" />
     </Key>
     <Property Name="IdConfiguration" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="volMusic" Type="int" Nullable="false" />
-    <Property Name="volSFX" Type="int" Nullable="false" />
+    <Property Name="volMusic" Type="float" Nullable="false" />
     <Property Name="language" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
 </Schema></edmx:StorageModels>
@@ -49,8 +48,7 @@
             <PropertyRef Name="IdConfiguration" />
           </Key>
           <Property Name="IdConfiguration" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="volMusic" Type="Int32" Nullable="false" />
-          <Property Name="volSFX" Type="Int32" Nullable="false" />
+          <Property Name="volMusic" Type="Double" Nullable="false" />
           <Property Name="language" Type="String" Nullable="false" />
         </EntityType>
       </Schema>
@@ -74,7 +72,6 @@
         <MappingFragment StoreEntitySet="ConfigurationSet">
           <ScalarProperty Name="IdConfiguration" ColumnName="IdConfiguration" />
           <ScalarProperty Name="volMusic" ColumnName="volMusic" />
-          <ScalarProperty Name="volSFX" ColumnName="volSFX" />
           <ScalarProperty Name="language" ColumnName="language" />
         </MappingFragment>
       </EntityTypeMapping>

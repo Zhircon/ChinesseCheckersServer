@@ -26,5 +26,15 @@ namespace ChinesseCheckersServer
         {
             return Logic.PlayerManager.AddPlayer(_nickname, _password, _email);
         }
+
+        OperationResult IPlayerMgt.UpdateConfiguration(Configuration _configuration)
+        {
+            return Logic.ConfigurationManager.UpdateConfiguration(_configuration);
+        }
+
+        OperationResult IPlayerMgt.UpdatePlayer(Player _player)
+        {
+            return Logic.PlayerManager.UpdatePlayer(_player);
+        }
     }
 }

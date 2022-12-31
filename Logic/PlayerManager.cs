@@ -112,6 +112,25 @@ namespace Logic
                 return session;
             }
         }
+        public static OperationResult UpdatePlayer(DataAccess.Player _Player)
+        {
+            OperationResult operationResult = OperationResult.Unknown;
+            using (var _context = new DataAccess.ChinesseCheckersDBEntities())
+            {
+                try
+                {
+                    var dbPlayer = _context.PlayerSet.Find(_Player.IdPlayer);
+                    dbPlayer.Email = _Player.Email;
+                    dbPlayer.Nickname = _Player.Nickname;
+                    dbPlayer.Password = Encrypt.GetSHA256(_Player.Password);
+                    _context.SaveChanges();
+                    operationResult = OperationResult.Sucessfull;
+                }catch(System.Data.Entity.Core.EntityException){
+                    operationResult = OperationResult.ConnectionLost;
+                }
+            }
+            return operationResult;
+        }
         public static OperationResult DeletePlayer(int _idPlayer)
         {
             DataAccess.Player playerLoged = null;

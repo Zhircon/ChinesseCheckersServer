@@ -16,8 +16,7 @@ namespace Logic
                 try
                 {
                     configuration.IdConfiguration = _idPlayer;
-                    configuration.volMusic = 100;
-                    configuration.volSFX = 100;
+                    configuration.volMusic = 1.0;
                     configuration.language = "es";
                     _context.ConfigurationSet.Add(configuration);
                     _context.SaveChanges();
@@ -27,6 +26,27 @@ namespace Logic
                     configuration = null;
                 }
                 return configuration;
+            }
+        }
+        public static Logic.OperationResult UpdateConfiguration(DataAccess.Configuration _configuration)
+        {
+            OperationResult operationResult = OperationResult.Unknown;
+            using (var _context = new DataAccess.ChinesseCheckersDBEntities())
+            {
+                try
+                {
+                    var dbCnfiguration = _context.ConfigurationSet.Find(_configuration.IdConfiguration);
+                    dbCnfiguration.volMusic = _configuration.volMusic;
+                    dbCnfiguration.language = _configuration.language;
+                    _context.SaveChanges();
+                    operationResult = OperationResult.Sucessfull;
+                }
+                catch (System.Data.Entity.Core.EntityException)
+                {
+                    Console.WriteLine("Database server not found");
+                    operationResult = OperationResult.ConnectionLost;
+                }
+                return operationResult;
             }
         }
         public static Logic.OperationResult DeleteConfiguration(int _idPlayer)

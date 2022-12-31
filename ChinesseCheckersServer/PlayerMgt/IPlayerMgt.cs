@@ -17,5 +17,9 @@ namespace ChinesseCheckersServer
         Logic.Session Login(string _email, string _password);
         [OperationContract]
         Logic.OperationResult DeletePlayer(int _idPlayer);
+        [OperationContract]
+        Logic.OperationResult UpdateConfiguration(DataAccess.Configuration _configuration);
+        [OperationContract]
+        Logic.OperationResult UpdatePlayer(DataAccess.Player _player);
     }
 }
