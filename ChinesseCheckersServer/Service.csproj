@@ -46,10 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChatMgt\ChatMgt.cs" />
+    <Compile Include="ChatMgt\IChatMgtCallback.cs" />
     <Compile Include="ConnectionTest\ConnectionTestMgt.cs" />
     <Compile Include="ConnectionTest\IConnectionTestMgt.cs" />
     <Compile Include="EmailMgt\EmailMgt.cs" />
     <Compile Include="EmailMgt\IEmailMgt.cs" />
+    <Compile Include="ChatMgt\IChatMgt.cs" />
+    <Compile Include="GameplayMgt\IGameplayMgt.cs" />
+    <Compile Include="GameplayMgt\IGameplayMgtCallback.cs" />
+    <Compile Include="RoomMgt\IRoomMgt.cs" />
+    <Compile Include="RoomMgt\IRoomMgtCallback.cs" />
+    <Compile Include="RoomMgt\RoomMgt.cs" />
+    <Compile Include="RoomMgt\Room.cs" />
     <Compile Include="PlayerMgt\PlayerMgt.cs" />
     <Compile Include="PlayerMgt\IPlayerMgt.cs" />
     <Compile Include="Program.cs" />
