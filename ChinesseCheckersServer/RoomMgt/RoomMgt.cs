@@ -11,7 +11,7 @@ namespace ChinesseCheckersServer
 {
     public partial class GameService : IRoomMgt
     {
-        private Dictionary<string, Room> roomList = new Dictionary<string, Room>();
+        private readonly Dictionary<string, Room> roomList = new Dictionary<string, Room>();
         string IRoomMgt.CreateRoom()
         {
             string idRoom;
@@ -19,7 +19,7 @@ namespace ChinesseCheckersServer
             {
                 idRoom = Logic.Encrypt.GenerateNewCode();
             } while (roomList.ContainsKey(idRoom));
-            var room = new Room() { IdRoom = idRoom };
+            var room = new Room { IdRoom = idRoom };
             roomList.Add(idRoom, room);
             return idRoom;
         }
