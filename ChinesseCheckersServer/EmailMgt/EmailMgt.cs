@@ -16,7 +16,7 @@ namespace ChinesseCheckersServer
 
         string IEmailMgt.SendVerificationCode(string _recipients)
         {
-            throw new NotImplementedException();
+            return Logic.EmailManager.SendVerificationCode(_recipients);
         }
     }
 }

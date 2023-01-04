@@ -12,7 +12,7 @@ namespace Logic
     {
         private static readonly SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587)
         {
-            Credentials = new NetworkCredential("agnizahir@gmail.com", "dsedbcgjqhaisphv"),
+            Credentials = new NetworkCredential("agnizahir@gmail.com", "opctpjrpdymgeezm"),
             EnableSsl = true
         };
         public static OperationResult SendEmailMessage(string _recipients,string _subject,string _body)
@@ -28,6 +28,24 @@ namespace Logic
                 operationResult = OperationResult.Failed;
             }
             return operationResult;
+        }
+        public static string SendVerificationCode(string _recipients)
+        {
+
+            string _from = "agnizahir@gmail.com";
+            string code;
+            try
+            {
+                code = Encrypt.GenerateNewCode();
+                smtpClient.Send(_from, _recipients, "Verification code ",code);
+                
+            }
+            catch (SmtpException se )
+            {
+                code = "";
+                Console.WriteLine(se.Message);
+            }
+            return code;
         }
     }
 }
