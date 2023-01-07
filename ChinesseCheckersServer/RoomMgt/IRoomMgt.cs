@@ -11,7 +11,7 @@ namespace ChinesseCheckersServer
     public interface IRoomMgt 
     {
         [OperationContract]
-        string CreateRoom();
+        string CreateRoom(int _numberOfAllowedPlayers);
         [OperationContract]
         Room SearchRoom(string _idRoom);
         [OperationContract]

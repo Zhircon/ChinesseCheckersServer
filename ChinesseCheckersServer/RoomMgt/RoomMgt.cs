@@ -12,14 +12,18 @@ namespace ChinesseCheckersServer
     public partial class GameService : IRoomMgt
     {
         private readonly Dictionary<string, Room> roomList = new Dictionary<string, Room>();
-        string IRoomMgt.CreateRoom()
+        private const int PLAYER_NOT_ALLOWED = -1;
+        string IRoomMgt.CreateRoom(int _numberOfAllowedPlayers)
         {
             string idRoom;
             do
             {
                 idRoom = Logic.Encrypt.GenerateNewCode();
             } while (roomList.ContainsKey(idRoom));
-            var room = new Room { IdRoom = idRoom };
+            var room = new Room { 
+                IdRoom = idRoom,
+                NumberOfAllowedPlayers = _numberOfAllowedPlayers
+            };
             roomList.Add(idRoom, room);
             return idRoom;
         }
@@ -31,14 +35,19 @@ namespace ChinesseCheckersServer
             Room room;
             roomList.TryGetValue(_idRoom, out room);
             if (room != null){
-                room.Players.Add(_player.IdPlayer,_player);
-                room.RoomCallbacks.Add(_player.IdPlayer, callbackOfThis);
-                numberOfPlayer = room.Players.Count();
-                foreach (IRoomMgtCallback callback in room.RoomCallbacks.Values)
+                if (room.Players.Values.Count() < room.NumberOfAllowedPlayers)
                 {
-                    callback.UpdateNumberOfPlayersConected(numberOfPlayer);
+                    room.Players.Add(_player.IdPlayer, _player);
+                    room.RoomCallbacks.Add(_player.IdPlayer, callbackOfThis);
+                    numberOfPlayer = room.Players.Count();
+                    foreach (IRoomMgtCallback callback in room.RoomCallbacks.Values)
+                    {
+                        callback.UpdateNumberOfPlayersConected(numberOfPlayer);
+                    }
                 }
-                
+                else { 
+                    numberOfPlayer = PLAYER_NOT_ALLOWED;
+                }
             }
             return numberOfPlayer;
         }

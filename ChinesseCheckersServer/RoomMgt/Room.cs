@@ -13,13 +13,18 @@ namespace ChinesseCheckersServer
         private Dictionary<int, IChatMgtCallback> chatCallbacks;
         private Dictionary<int, IGameplayMgtCallback> gameplayCallbacks;
         private string idRoom;
-        
+        private int numberOfAllowedPlayers;
         public Room()
         {
             players = new Dictionary<int, DataAccess.Player>();
             roomCallbacks = new Dictionary<int, IRoomMgtCallback>();
             chatCallbacks = new Dictionary<int, IChatMgtCallback>();
             gameplayCallbacks = new Dictionary<int, IGameplayMgtCallback>();
+        }
+        public int NumberOfAllowedPlayers
+        {
+            get { return numberOfAllowedPlayers; }
+            set { numberOfAllowedPlayers = value; }
         }
         public string IdRoom
         {
