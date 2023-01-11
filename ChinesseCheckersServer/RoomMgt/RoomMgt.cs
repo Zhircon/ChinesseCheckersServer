@@ -62,7 +62,9 @@ namespace ChinesseCheckersServer
                 if (room.RoomCallbacks.ContainsKey(_idPlayer)) { room.RoomCallbacks.Remove(_idPlayer); }
                 if (room.ChatCallbacks.ContainsKey(_idPlayer)) { room.ChatCallbacks.Remove(_idPlayer); }
                 if (room.GameplayCallbacks.ContainsKey(_idPlayer)) { room.GameplayCallbacks.Remove(_idPlayer); }
+                if (room.Players.Count() == 0) { roomList.Remove(_idRoom); }
                 { operationResult = OperationResult.Sucessfull; }
+                
             }
             return operationResult;
         }
@@ -79,12 +81,20 @@ namespace ChinesseCheckersServer
                 }
             }
         }
-
         Room IRoomMgt.SearchRoom(string _idRoom)
         {
             Room room;
             roomList.TryGetValue(_idRoom, out room);
             return room;
+        }
+
+        bool IRoomMgt.IsPlayerInRoom(string _idRoom, int _idPlayer)
+        {
+            bool isPlayerInRoom = false;
+            Room room;
+            roomList.TryGetValue(_idRoom, out room);
+            if (room != null) { isPlayerInRoom = room.Players.ContainsKey(_idPlayer); };
+            return isPlayerInRoom;
         }
     }
 }

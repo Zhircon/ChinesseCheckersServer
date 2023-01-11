@@ -19,6 +19,8 @@ namespace ChinesseCheckersServer
         [OperationContract]
         Logic.OperationResult LeaveRoom(string _idRoom, int _idPlayer);
         [OperationContract]
+        bool IsPlayerInRoom(string _idRoom, int _idPlayer);
+        [OperationContract]
         void NotifyAllPlayersReady(string _idRoom);
     }
 }

@@ -44,6 +44,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChatMgt\ChatMgt.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="EmailMgt\EmailMgt.cs" />
     <Compile Include="EmailMgt\IEmailMgt.cs" />
     <Compile Include="ChatMgt\IChatMgt.cs" />
+    <Compile Include="GameplayMgt\GameplayMgt.cs" />
     <Compile Include="GameplayMgt\IGameplayMgt.cs" />
     <Compile Include="GameplayMgt\IGameplayMgtCallback.cs" />
     <Compile Include="RoomMgt\IRoomMgt.cs" />
