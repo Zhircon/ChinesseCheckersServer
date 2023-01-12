@@ -12,5 +12,7 @@ namespace ChinesseCheckersServer
     {
         [OperationContract]
         void ReceiveMessage(string _nickname,string _message);
+        [OperationContract]
+        void ReceiveFriendRequest(int _idApplicantPlayer, string _nicknameApplicantPlayer);
     }
 }

@@ -11,7 +11,7 @@ namespace ChinesseCheckersServer
     {
         Logic.OperationResult IEmailMgt.SendEmail(string _recipients, string _subject, string _body)
         {
-            throw new NotImplementedException();
+            return Logic.EmailManager.SendEmailMessage(_recipients, _subject, _body);
         }
 
         string IEmailMgt.SendVerificationCode(string _recipients)

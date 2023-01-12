@@ -20,7 +20,7 @@ namespace Logic
 
     public static class PlayerManager
     {
-        private static DataAccess.Player searchPlayerByEmail(string _email)
+        private static DataAccess.Player SearchPlayerByEmail(string _email)
         {
             DataAccess.Player playerSearched = null;
             using (var _context = new DataAccess.ChinesseCheckersDBEntities())
@@ -28,6 +28,24 @@ namespace Logic
                 try
                 {
                     playerSearched = _context.PlayerSet.Where(r => r.Email.Equals(_email)).FirstOrDefault();
+                }
+                catch (System.Data.Entity.Core.EntityException)
+                {
+                    Console.WriteLine("Database server not found");
+                    playerSearched = null;
+                }
+                return playerSearched;
+            }
+        }
+
+        public static DataAccess.Player SearchPlayerById(int _idPlayer)
+        {
+            DataAccess.Player playerSearched = null;
+            using (var _context = new DataAccess.ChinesseCheckersDBEntities())
+            {
+                try
+                {
+                    playerSearched = _context.PlayerSet.Where(r => r.IdPlayer.Equals(_idPlayer)).FirstOrDefault();
                 }
                 catch (System.Data.Entity.Core.EntityException)
                 {
@@ -48,7 +66,7 @@ namespace Logic
             {
                 try
                 {
-                    if (searchPlayerByEmail(_email) == null)
+                    if (SearchPlayerByEmail(_email) == null)
                     {
                         playerToAdd.Nickname = _nickname;
                         playerToAdd.Password = Encrypt.GetSHA256(_password);

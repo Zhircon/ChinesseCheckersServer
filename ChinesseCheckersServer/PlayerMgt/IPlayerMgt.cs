@@ -21,5 +21,7 @@ namespace ChinesseCheckersServer
         Logic.OperationResult UpdateConfiguration(DataAccess.Configuration _configuration);
         [OperationContract]
         Logic.OperationResult UpdatePlayer(DataAccess.Player _player);
+        [OperationContract]
+        DataAccess.Player SearchPlayerById(int _idPlayer);
     }
 }

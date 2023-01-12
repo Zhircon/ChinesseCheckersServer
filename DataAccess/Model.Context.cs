@@ -27,5 +27,6 @@ namespace DataAccess
     
         public virtual DbSet<Player> PlayerSet { get; set; }
         public virtual DbSet<Configuration> ConfigurationSet { get; set; }
+        public virtual DbSet<Relationship> RelationshipSet { get; set; }
     }
 }

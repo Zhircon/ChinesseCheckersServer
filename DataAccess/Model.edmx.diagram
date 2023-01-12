@@ -7,6 +7,7 @@
       <Diagram DiagramId="b0cb20c1699a41a99197c15605103eba" Name="Diagram1" ZoomLevel="150">
         <EntityTypeShape EntityType="ChinesseCheckersDBModel.Player" Width="1.5" PointX="3.25" PointY="1.25" />
         <EntityTypeShape EntityType="ChinesseCheckersDBModel.Configuration" Width="1.5" PointX="5.75" PointY="1.375" />
+        <EntityTypeShape EntityType="ChinesseCheckersDBModel.Relationship" Width="1.5" PointX="4.75" PointY="3.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

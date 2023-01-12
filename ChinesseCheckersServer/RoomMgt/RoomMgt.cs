@@ -90,10 +90,10 @@ namespace ChinesseCheckersServer
 
         bool IRoomMgt.IsPlayerInRoom(string _idRoom, int _idPlayer)
         {
-            bool isPlayerInRoom = false;
+            bool isPlayerInRoom=false;
             Room room;
             roomList.TryGetValue(_idRoom, out room);
-            if (room != null) { isPlayerInRoom = room.Players.ContainsKey(_idPlayer); };
+            if (room != null) { isPlayerInRoom = room.Players.ContainsKey(_idPlayer); }
             return isPlayerInRoom;
         }
     }

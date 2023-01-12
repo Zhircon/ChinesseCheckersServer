@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/31/2022 13:11:50
+-- Date Created: 01/11/2023 10:01:32
 -- Generated from EDMX file: C:\Users\Zhircon\source\repos\ChinesseCheckersServer\DataAccess\Model.edmx
 -- --------------------------------------------------
 
@@ -50,6 +50,15 @@ CREATE TABLE [dbo].[ConfigurationSet] (
 );
 GO
 
+-- Creating table 'RelationshipSet'
+CREATE TABLE [dbo].[RelationshipSet] (
+    [IdRelationship] int IDENTITY(1,1) NOT NULL,
+    [idOwner] int  NOT NULL,
+    [idGuest] int  NOT NULL,
+    [IsBadRelation] bit  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -64,6 +73,12 @@ GO
 ALTER TABLE [dbo].[ConfigurationSet]
 ADD CONSTRAINT [PK_ConfigurationSet]
     PRIMARY KEY CLUSTERED ([IdConfiguration] ASC);
+GO
+
+-- Creating primary key on [IdRelationship] in table 'RelationshipSet'
+ALTER TABLE [dbo].[RelationshipSet]
+ADD CONSTRAINT [PK_RelationshipSet]
+    PRIMARY KEY CLUSTERED ([IdRelationship] ASC);
 GO
 
 -- --------------------------------------------------

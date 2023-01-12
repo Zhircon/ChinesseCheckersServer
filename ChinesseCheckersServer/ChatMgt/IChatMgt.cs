@@ -14,5 +14,7 @@ namespace ChinesseCheckersServer
         void JoinToChat(string _idRoom, int _idPlayer);
         [OperationContract]
         void SendMessage(string _idRoom,string _nickname, string _message);
+        [OperationContract]
+        void SendFrienRequest(string _idRoom, int _idApplicantPlayer, string _nicknameApplicantPlayer, int _idPlayerAddressed);
     }
 }

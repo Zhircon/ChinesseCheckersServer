@@ -8,6 +8,7 @@
   <EntityContainer Name="ChinesseCheckersDBModelStoreContainer">
     <EntitySet Name="PlayerSet" EntityType="ChinesseCheckersDBModel.Store.PlayerSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ConfigurationSet" EntityType="ChinesseCheckersDBModel.Store.ConfigurationSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RelationshipSet" EntityType="ChinesseCheckersDBModel.Store.RelationshipSet" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="PlayerSet">
     <Key>
@@ -26,6 +27,15 @@
     <Property Name="volMusic" Type="float" Nullable="false" />
     <Property Name="language" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="RelationshipSet">
+    <Key>
+      <PropertyRef Name="IdRelationship" />
+    </Key>
+    <Property Name="IdRelationship" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idOwner" Type="int" Nullable="false" />
+    <Property Name="idGuest" Type="int" Nullable="false" />
+    <Property Name="IsBadRelation" Type="bit" Nullable="false" />
+  </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -33,6 +43,7 @@
         <EntityContainer Name="ChinesseCheckersDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="PlayerSet" EntityType="ChinesseCheckersDBModel.Player" />
           <EntitySet Name="ConfigurationSet" EntityType="ChinesseCheckersDBModel.Configuration" />
+          <EntitySet Name="RelationshipSet" EntityType="ChinesseCheckersDBModel.Relationship" />
         </EntityContainer>
         <EntityType Name="Player">
           <Key>
@@ -50,6 +61,15 @@
           <Property Name="IdConfiguration" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="volMusic" Type="Double" Nullable="false" />
           <Property Name="language" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Relationship">
+          <Key>
+            <PropertyRef Name="IdRelationship" />
+          </Key>
+          <Property Name="IdRelationship" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idOwner" Type="Int32" Nullable="false" />
+          <Property Name="idGuest" Type="Int32" Nullable="false" />
+          <Property Name="IsBadRelation" Type="Boolean" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -73,6 +93,16 @@
           <ScalarProperty Name="IdConfiguration" ColumnName="IdConfiguration" />
           <ScalarProperty Name="volMusic" ColumnName="volMusic" />
           <ScalarProperty Name="language" ColumnName="language" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RelationshipSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ChinesseCheckersDBModel.Relationship)">
+        <MappingFragment StoreEntitySet="RelationshipSet">
+          <ScalarProperty Name="IdRelationship" ColumnName="IdRelationship" />
+          <ScalarProperty Name="idOwner" ColumnName="idOwner" />
+          <ScalarProperty Name="idGuest" ColumnName="idGuest" />
+          <ScalarProperty Name="IsBadRelation" ColumnName="IsBadRelation" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

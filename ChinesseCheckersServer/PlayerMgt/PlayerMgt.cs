@@ -17,6 +17,7 @@ namespace ChinesseCheckersServer
             return Logic.PlayerManager.DeletePlayer(_idPlayer);
         }
 
+
         Logic.Session IPlayerMgt.Login(string _email, string _password)
         {
             return Logic.PlayerManager.Login(_email, _password);
@@ -25,6 +26,11 @@ namespace ChinesseCheckersServer
         Logic.OperationResult IPlayerMgt.RegisterPlayer(string _nickname, string _password, string _email)
         {
             return Logic.PlayerManager.AddPlayer(_nickname, _password, _email);
+        }
+
+        DataAccess.Player IPlayerMgt.SearchPlayerById(int _idPlayer)
+        {
+            return Logic.PlayerManager.SearchPlayerById(_idPlayer);
         }
 
         OperationResult IPlayerMgt.UpdateConfiguration(Configuration _configuration)

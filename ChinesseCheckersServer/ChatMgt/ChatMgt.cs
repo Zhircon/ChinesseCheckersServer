@@ -17,6 +17,24 @@ namespace ChinesseCheckersServer
             if (room != null) { room.ChatCallbacks.Add(_idPlayer, callback); }
         }
 
+        void IChatMgt.SendFrienRequest(string _idRoom, int _idApplicantPlayer, string _nicknameApplicantPlayer, int _idPlayerAddressed)
+        {
+            Room room;
+            roomList.TryGetValue(_idRoom, out room);
+            if (room != null)
+            {
+                try
+                {
+                    room.ChatCallbacks[_idPlayerAddressed].ReceiveFriendRequest(_idApplicantPlayer,_nicknameApplicantPlayer);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+     
+            }
+        }
+
         void IChatMgt.SendMessage(string _idRoom,string _nickname, string _message)
         {
             Room room;
@@ -32,7 +50,6 @@ namespace ChinesseCheckersServer
                     {
                         Console.WriteLine(ex.Message);
                     }
-                    
                 }
             }
         }
