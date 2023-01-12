@@ -14,7 +14,7 @@ namespace ChinesseCheckersServer
         [OperationContract]
         void JoinToGameplay(string _idRoom, int _idPlayer);
         [OperationContract]
-        void MoveToken(string _idRoom, Point _from, Point _to);
+        void MoveToken(string _idRoom, char _charToken, Point _from, Point _to);
         [OperationContract]
         void TerminateTurn(string _idRoom);
     }

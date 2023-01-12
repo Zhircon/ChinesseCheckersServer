@@ -25,11 +25,11 @@ namespace ChinesseCheckersServer
             }
         }
 
-        void IGameplayMgt.MoveToken(string _idRoom, Point _from, Point _to)
+        void IGameplayMgt.MoveToken(string _idRoom,char _charToken,Point _from, Point _to)
         {
             foreach (IGameplayMgtCallback callback in roomList[_idRoom].GameplayCallbacks.Values)
             {
-                callback.MoveAllPlayers(_from, _to);
+                callback.MoveAllPlayers(_charToken,_from, _to);
             }
         }
 

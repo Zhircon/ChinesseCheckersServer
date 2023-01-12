@@ -12,7 +12,7 @@ namespace ChinesseCheckersServer
     public interface IGameplayMgtCallback
     {
         [OperationContract]
-        void MoveAllPlayers(Point _from, Point _to);
+        void MoveAllPlayers(char _charToken,Point _from, Point _to);
         [OperationContract]
         void ChangeTurn(int turn);
     }
