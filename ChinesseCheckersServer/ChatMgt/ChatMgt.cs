@@ -14,7 +14,18 @@ namespace ChinesseCheckersServer
             var callback = OperationContext.Current.GetCallbackChannel<IChatMgtCallback>();
             Room room;
             roomList.TryGetValue(_idRoom, out room);
-            if (room != null) { room.ChatCallbacks.Add(_idPlayer, callback); }
+            if (room != null) {
+                if (!room.ChatCallbacks.Keys.Contains(_idPlayer))
+                {
+                    room.ChatCallbacks.Add(_idPlayer, callback);
+                }
+                else
+                {
+                    room.ChatCallbacks.Remove(_idPlayer);
+                    room.ChatCallbacks.Add(_idPlayer, callback);
+                }
+                
+            }
         }
 
         void IChatMgt.SendFrienRequest(string _idRoom, int _idApplicantPlayer, string _nicknameApplicantPlayer, int _idPlayerAddressed)

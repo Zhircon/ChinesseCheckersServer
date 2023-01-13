@@ -98,7 +98,7 @@ namespace Logic
             DataAccess.Player playerLoged = null;
             DataAccess.Configuration playerConfiguration = null;
             var emailLowered = _email.ToLower(CultureInfo.InvariantCulture);
-            var passwordHashed = Encrypt.GetSHA256(_password); 
+            var passwordHashed = Encrypt.GetSHA256(_password);
             using (var _context = new DataAccess.ChinesseCheckersDBEntities())
             {
                 try

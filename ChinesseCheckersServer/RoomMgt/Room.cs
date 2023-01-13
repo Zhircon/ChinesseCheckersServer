@@ -54,7 +54,8 @@ namespace ChinesseCheckersServer
         }
         public int ChangeTurn()
         {
-            turn = (turn == numberOfAllowedPlayersOriginal - 1 ) ? 0 : turn+=1;
+            int nextTurn = turn + 1;
+            turn = (turn == numberOfAllowedPlayersOriginal - 1 ) ? 0 : nextTurn;
             return turn;
         }
         public int NumberOfAllowedPlayers
