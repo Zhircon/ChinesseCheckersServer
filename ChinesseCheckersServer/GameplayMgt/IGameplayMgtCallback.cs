@@ -14,6 +14,8 @@ namespace ChinesseCheckersServer
         [OperationContract]
         void MoveAllPlayers(char _charToken,Point _from, Point _to);
         [OperationContract]
-        void ChangeTurn(int turn);
+        void ChangeTurn(char _colorTurn);
+        [OperationContract]
+        void GameOver(string _playerNicknameDeclare, string _message);
     }
 }

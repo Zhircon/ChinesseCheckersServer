@@ -17,7 +17,7 @@ namespace ChinesseCheckersServer
         [OperationContract]
         int JoinToRoom(string _idRoom,DataAccess.Player _player);
         [OperationContract]
-        Logic.OperationResult LeaveRoom(string _idRoom, int _idPlayer);
+        Logic.OperationResult LeaveRoom(string _idRoom, int _idPlayer,bool _isInGameplay);
         [OperationContract]
         bool IsPlayerInRoom(string _idRoom, int _idPlayer);
         [OperationContract]

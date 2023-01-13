@@ -12,6 +12,9 @@ namespace ChinesseCheckersServer
         private Dictionary<int, IRoomMgtCallback> roomCallbacks;
         private Dictionary<int, IChatMgtCallback> chatCallbacks;
         private Dictionary<int, IGameplayMgtCallback> gameplayCallbacks;
+        private Dictionary<int, char> playersColors;
+        private char[] colorForTwoPlayers = new char[] { 'N', 'R' };
+        private char[] colorForThreePlayers = new char[] { 'N', 'M', 'B' };
         private string idRoom;
         private int numberOfAllowedPlayers;
         private int turn;
@@ -21,11 +24,32 @@ namespace ChinesseCheckersServer
             roomCallbacks = new Dictionary<int, IRoomMgtCallback>();
             chatCallbacks = new Dictionary<int, IChatMgtCallback>();
             gameplayCallbacks = new Dictionary<int, IGameplayMgtCallback>();
+            playersColors = new Dictionary<int, char>();
+        }
+        public char[] ColorForTwoPlayers
+        {
+            get { return colorForTwoPlayers; }
+            set { colorForTwoPlayers = value; }
+        }
+        public char[] ColorForThreePlayers
+        {
+            get { return colorForThreePlayers; }
+            set { colorForThreePlayers = value; }
+        }
+        public Dictionary<int,char> PlayersColors
+        {
+            get { return playersColors; }
+            set { playersColors = value; }
         }
         public int Turn
         {
             get { return turn; }
             set { turn = value; }
+        }
+        public int ChangeTurn()
+        {
+            turn = (turn == numberOfAllowedPlayers - 1 ) ? 0 : turn+=1;
+            return turn;
         }
         public int NumberOfAllowedPlayers
         {

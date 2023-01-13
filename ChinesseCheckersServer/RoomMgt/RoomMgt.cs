@@ -22,7 +22,9 @@ namespace ChinesseCheckersServer
             } while (roomList.ContainsKey(idRoom));
             var room = new Room { 
                 IdRoom = idRoom,
-                NumberOfAllowedPlayers = _numberOfAllowedPlayers
+                NumberOfAllowedPlayers = _numberOfAllowedPlayers,
+                Turn = 0
+                
             };
             roomList.Add(idRoom, room);
             return idRoom;
@@ -51,7 +53,7 @@ namespace ChinesseCheckersServer
             }
             return numberOfPlayer;
         }
-        OperationResult IRoomMgt.LeaveRoom(string _idRoom, int _idPlayer)
+        OperationResult IRoomMgt.LeaveRoom(string _idRoom, int _idPlayer,bool _isInGameplay)
         {
             Logic.OperationResult operationResult = OperationResult.Unknown;
             Room room;
