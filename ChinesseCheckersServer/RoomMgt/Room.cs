@@ -13,9 +13,11 @@ namespace ChinesseCheckersServer
         private Dictionary<int, IChatMgtCallback> chatCallbacks;
         private Dictionary<int, IGameplayMgtCallback> gameplayCallbacks;
         private Dictionary<int, char> playersColors;
+        
         private char[] colorForTwoPlayers = new char[] { 'N', 'R' };
         private char[] colorForThreePlayers = new char[] { 'N', 'M', 'B' };
         private string idRoom;
+        
         private int numberOfAllowedPlayers;
         private int numberOfAllowedPlayersOriginal;
         private int turn;

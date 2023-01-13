@@ -38,11 +38,10 @@ namespace ChinesseCheckersServer
                 {
                     room.ChatCallbacks[_idPlayerAddressed].ReceiveFriendRequest(_idApplicantPlayer,_nicknameApplicantPlayer);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("Fail to connect");
                 }
-     
             }
         }
 
@@ -57,9 +56,9 @@ namespace ChinesseCheckersServer
                     {
                         element.ReceiveMessage(_nickname, _message);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
+                        Console.WriteLine("Fail to connect");
                     }
                 }
             }

@@ -132,17 +132,25 @@ namespace Logic
         }
         public static OperationResult UpdatePlayer(DataAccess.Player _Player)
         {
+            if (_Player == null) { return OperationResult.Failed; }
             OperationResult operationResult = OperationResult.Unknown;
             using (var _context = new DataAccess.ChinesseCheckersDBEntities())
             {
                 try
                 {
                     var dbPlayer = _context.PlayerSet.Find(_Player.IdPlayer);
-                    dbPlayer.Email = _Player.Email;
-                    dbPlayer.Nickname = _Player.Nickname;
-                    dbPlayer.Password = Encrypt.GetSHA256(_Player.Password);
-                    _context.SaveChanges();
-                    operationResult = OperationResult.Sucessfull;
+                    if(dbPlayer!=null)
+                    {
+                        dbPlayer.Email = _Player.Email;
+                        dbPlayer.Nickname = _Player.Nickname;
+                        dbPlayer.Password = Encrypt.GetSHA256(_Player.Password);
+                        _context.SaveChanges();
+                        operationResult = OperationResult.Sucessfull;
+                    }
+                    else {
+                        operationResult = OperationResult.Failed;
+                    }
+
                 }catch(System.Data.Entity.Core.EntityException){
                     operationResult = OperationResult.ConnectionLost;
                 }

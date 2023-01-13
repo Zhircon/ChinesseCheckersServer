@@ -30,24 +30,33 @@ namespace Logic
         }
         public static Logic.OperationResult UpdateConfiguration(DataAccess.Configuration _configuration)
         {
+            if (_configuration == null) { return OperationResult.Failed; }
             OperationResult operationResult = OperationResult.Unknown;
             using (var _context = new DataAccess.ChinesseCheckersDBEntities())
             {
                 try
                 {
-                    var dbCnfiguration = _context.ConfigurationSet.Find(_configuration.IdConfiguration);
-                    dbCnfiguration.volMusic = _configuration.volMusic;
-                    dbCnfiguration.language = _configuration.language;
-                    _context.SaveChanges();
-                    operationResult = OperationResult.Sucessfull;
+                    var dbConfiguration = _context.ConfigurationSet.Find(_configuration.IdConfiguration);
+                    if (dbConfiguration != null)
+                    {
+                        dbConfiguration.volMusic = _configuration.volMusic;
+                        dbConfiguration.language = _configuration.language;
+                        _context.SaveChanges();
+                        operationResult = OperationResult.Sucessfull;
+                    }
+                    else
+                    {
+                        operationResult = OperationResult.Failed;
+                    }
+
                 }
                 catch (System.Data.Entity.Core.EntityException)
                 {
                     Console.WriteLine("Database server not found");
                     operationResult = OperationResult.ConnectionLost;
                 }
-                return operationResult;
             }
+            return operationResult;
         }
         public static Logic.OperationResult DeleteConfiguration(int _idPlayer)
         {

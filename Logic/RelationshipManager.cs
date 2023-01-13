@@ -11,9 +11,15 @@ namespace Logic
         public static List<DataAccess.Relationship> GetRelationships(int _idPlayer)
         {
             List<DataAccess.Relationship> relationships;
-            using (var _context= new DataAccess.ChinesseCheckersDBEntities())
+            try
             {
-                relationships = _context.RelationshipSet.Where(r => r.idOwner.Equals(_idPlayer)).ToList();
+                using (var _context = new DataAccess.ChinesseCheckersDBEntities())
+                {
+                    relationships = _context.RelationshipSet.Where(r => r.idOwner.Equals(_idPlayer)).ToList();
+                }   
+            }catch (System.Data.Entity.Core.EntityException)
+            {
+                relationships = new List<DataAccess.Relationship>();
             }
             return relationships;
         }
@@ -54,6 +60,7 @@ namespace Logic
         }
         public static OperationResult DeclarateBadRelationship (int _idOwner,int _idGuest)
         {
+            if(_idOwner<=0 || _idGuest <=0 ){ return OperationResult.Failed; }
             OperationResult operationResult = OperationResult.Unknown;
             using (var _context = new DataAccess.ChinesseCheckersDBEntities())
             {
@@ -61,10 +68,18 @@ namespace Logic
                 {
                     var relationship=_context.RelationshipSet.Where(r => r.idOwner.Equals(_idOwner) && r.idGuest.Equals(_idGuest)).FirstOrDefault();
                     var invertedRelationship=_context.RelationshipSet.Where(r => r.idOwner.Equals(_idGuest) && r.idGuest.Equals(_idOwner)).FirstOrDefault();
-                    relationship.IsBadRelation = true;
-                    invertedRelationship.IsBadRelation = true;
-                    _context.SaveChanges();
-                    operationResult = OperationResult.Sucessfull;
+                    if (relationship != null)
+                    {
+                        relationship.IsBadRelation = true;
+                        invertedRelationship.IsBadRelation = true;
+                        _context.SaveChanges();
+                        operationResult = OperationResult.Sucessfull;
+                    }
+                    else
+                    {
+                        operationResult = OperationResult.Failed;
+                    }
+
                 }
                 catch (System.Data.Entity.Core.EntityException)
                 {
