@@ -17,6 +17,7 @@ namespace ChinesseCheckersServer
         private char[] colorForThreePlayers = new char[] { 'N', 'M', 'B' };
         private string idRoom;
         private int numberOfAllowedPlayers;
+        private int numberOfAllowedPlayersOriginal;
         private int turn;
         public Room()
         {
@@ -25,6 +26,11 @@ namespace ChinesseCheckersServer
             chatCallbacks = new Dictionary<int, IChatMgtCallback>();
             gameplayCallbacks = new Dictionary<int, IGameplayMgtCallback>();
             playersColors = new Dictionary<int, char>();
+        }
+        public int NumberOfAllowedPlayersOriginal
+        {
+            get { return numberOfAllowedPlayersOriginal; }
+            set { numberOfAllowedPlayersOriginal = value; }
         }
         public char[] ColorForTwoPlayers
         {
@@ -48,7 +54,7 @@ namespace ChinesseCheckersServer
         }
         public int ChangeTurn()
         {
-            turn = (turn == numberOfAllowedPlayers - 1 ) ? 0 : turn+=1;
+            turn = (turn == numberOfAllowedPlayersOriginal - 1 ) ? 0 : turn+=1;
             return turn;
         }
         public int NumberOfAllowedPlayers

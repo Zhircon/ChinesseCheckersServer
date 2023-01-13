@@ -23,6 +23,7 @@ namespace ChinesseCheckersServer
             var room = new Room { 
                 IdRoom = idRoom,
                 NumberOfAllowedPlayers = _numberOfAllowedPlayers,
+                NumberOfAllowedPlayersOriginal = _numberOfAllowedPlayers,
                 Turn = 0
                 
             };
@@ -65,6 +66,7 @@ namespace ChinesseCheckersServer
                 if (room.ChatCallbacks.ContainsKey(_idPlayer)) { room.ChatCallbacks.Remove(_idPlayer); }
                 if (room.GameplayCallbacks.ContainsKey(_idPlayer)) { room.GameplayCallbacks.Remove(_idPlayer); }
                 if (room.Players.Count() == 0) { roomList.Remove(_idRoom); }
+                room.NumberOfAllowedPlayers--;
                 { operationResult = OperationResult.Sucessfull; }
                 
             }

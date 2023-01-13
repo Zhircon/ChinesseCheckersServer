@@ -69,7 +69,6 @@ namespace ChinesseCheckersServer
                 do
                 {
                     nextTurn = room.ChangeTurn();
-                    Console.WriteLine("nextTurn:" + nextTurn);
                     colorTurn = currentPalette.ElementAt(nextTurn);
                 } while (!room.PlayersColors.Values.Contains(colorTurn));
                 foreach (IGameplayMgtCallback callback in roomList[_idRoom].GameplayCallbacks.Values)
