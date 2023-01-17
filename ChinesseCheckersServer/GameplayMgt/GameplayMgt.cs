@@ -10,7 +10,7 @@ namespace ChinesseCheckersServer
 {
     public partial class GameService : IGameplayMgt
     {
-
+        private char NOTHING = 'X';
         char IGameplayMgt.AssingColor(string _idRoom, int _idPlayer)
         {
             char[] colors;
@@ -22,11 +22,11 @@ namespace ChinesseCheckersServer
                 if (room.NumberOfAllowedPlayers == 2) { colors = room.ColorForTwoPlayers; }
                 else { colors = room.ColorForThreePlayers; }
                 colorToAssing = colors[room.GameplayCallbacks.Keys.Count()];
-                room.PlayersColors.Add(_idPlayer, colorToAssing );
+                room.PlayersColors.Add(_idPlayer, colorToAssing);
             }
             else
             {
-                colorToAssing = 'X';
+                colorToAssing = NOTHING;
             }
             return colorToAssing;
         }
@@ -82,7 +82,7 @@ namespace ChinesseCheckersServer
             Room room;
             roomList.TryGetValue(_idRoom, out room);
             char[] currentPalette;
-            char colorTurn='X';
+            char colorTurn=NOTHING;
             if (room != null)
             {
                 currentPalette = (room.NumberOfAllowedPlayers == 2) ? room.ColorForTwoPlayers : room.ColorForThreePlayers;

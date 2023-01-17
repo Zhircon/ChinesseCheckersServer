@@ -15,7 +15,8 @@ namespace Logic
         Sucessfull = 0,
         Unknown = 1,
         Failed = 2,
-        ConnectionLost = 100
+        ConnectionLost = 100,
+        UniqueValueFound = 200
     }
 
     public static class PlayerManager
@@ -82,7 +83,7 @@ namespace Logic
                     }
                     else
                     {
-                        operationResult = OperationResult.Failed;
+                        operationResult = OperationResult.UniqueValueFound;
                     }
                 }catch (System.Data.Entity.Core.EntityException)
                 {

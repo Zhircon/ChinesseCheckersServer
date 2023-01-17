@@ -42,8 +42,7 @@ namespace Logic
             }
             catch (SmtpException se )
             {
-                code = "";
-                Console.WriteLine(se.Message);
+                code = "00000";
             }
             return code;
         }
